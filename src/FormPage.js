@@ -58,24 +58,20 @@ const FormPage = () => {
                 console.error('Error message:', error.message);
             }
             if (error.response) {
-                // Server responded with a status code outside the 2xx range
                 alert(`Error: ${error.response.data?.message || 'An unexpected error occurred.'}\nStatus: ${error.response.status}`);
             } else if (error.request) {
-                // Request was made but no response was received
                 alert('No response received from the server. Please check your network connection.');
             } else {
-                // Something happened while setting up the request
                 alert(`Request failed: ${error.message}`);
             }
-            // alert('There was an error submitting the form. Please try again.', error);
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '74vh', padding: 2 }}>
-            <Paper elevation={3} sx={{ padding: 4, maxWidth: 600 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '77vh', padding: 2 }}>
+            <Paper elevation={3} sx={{ padding: 4, maxWidth: 400, width: '100%' }}>
                 <Typography variant="h4" gutterBottom>
                     Caller Details:
                 </Typography>
@@ -89,11 +85,21 @@ const FormPage = () => {
                         required
                         margin="normal"
                     />
-                    <PhoneInput
-                        country={'in'}
-                        value={formData.phoneNumber}
-                        onChange={handleChange}
-                    />
+                    <Box sx={{ margin: 'normal', width: '100%' }}>
+                        <PhoneInput
+                            country={'in'}
+                            value={formData.phoneNumber}
+                            onChange={handleChange}
+                            inputStyle={{
+                                width: '100%',
+                                height: '56px',
+                                fontSize: '16px',
+                            }}
+                            buttonStyle={{
+                                height: '56px',
+                            }}
+                        />
+                    </Box>
                     <TextField
                         label="Email"
                         name="email"
@@ -102,7 +108,15 @@ const FormPage = () => {
                         fullWidth
                         margin="normal"
                     />
-                    <Button type="submit" variant="contained" fullWidth disabled={loading}>
+                    <Button type="submit" variant="contained" fullWidth disabled={loading}
+                        sx={{
+                            backgroundColor: '#0D9ECA',
+                            color: '#fff',
+                            '&:hover': {
+                                backgroundColor: '#0B7A9C',
+                            },
+                        }}
+                    >
                         {loading ? <CircularProgress size={24} /> : 'Submit'}
                     </Button>
                 </form>

@@ -17,8 +17,8 @@ const ResultsPage = () => {
                             padding: 4,
                             borderRadius: '16px',
                             backgroundColor: "#ecf0f1",
-                            height: 250, // Increased height for better spacing
-                            boxShadow: '1 4px 20px rgba(0, 0, 0, 0.1)', // Subtle shadow for depth
+                            height: { xs: 'auto', md: 250 },
+                            boxShadow: '1 4px 20px rgba(0, 0, 0, 0.1)',
                         }}
                     >
                         <Typography
@@ -26,9 +26,9 @@ const ResultsPage = () => {
                             gutterBottom
                             sx={{
                                 textAlign: 'center',
-                                color: '#2980b9',
+                                color: '#0B7A9C',
                                 fontWeight: 'bold',
-                                marginBottom: 2 // Added margin for spacing
+                                marginBottom: 2
                             }}
                         >
                             Engage with Our Conversational AI Agent Now!!
@@ -37,8 +37,8 @@ const ResultsPage = () => {
                             sx={{
                                 textAlign: 'center',
                                 marginTop: 1,
-                                color: '#34495E', // Darker text for better readability
-                                lineHeight: 1.5 // Improved line height for readability
+                                color: '#34495E',
+                                lineHeight: 1.5
                             }}
                         >
                             Experience the future of banking with our conversational AI agent, designed to provide personalized interactions and seamless banking services.<br />
@@ -46,36 +46,48 @@ const ResultsPage = () => {
                         </Typography>
                         <Typography
                             sx={{
+                                alignItems: 'center',
                                 textAlign: 'center',
                                 marginTop: 1,
                                 fontWeight: 'bold',
-                                fontSize: '1.5rem', // Slightly larger font size for emphasis
-                                color: '#2980b9'
+                                fontSize: '1.5rem',
+                                color: '#0B7A9C'
                             }}
                         >
-                            📞 +1 3239189240
+                            <img
+                                src='/phone.svg'
+                                alt="Phone Icon"
+                                style={{ height: "22px", width: "22px", marginRight: "8px" }}
+                            />
+                            +1 3239189240
                         </Typography>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            sx={{
-                                display: 'block',
-                                margin: '20px auto',
-                                width: '128px', // Slightly wider button
-                                padding: '10px', // Added padding for better touch target
-                                fontWeight: 'bold' // Bold text for emphasis
-                            }}
-                            component="a"
-                            href="tel:+13239189240"
-                        >
-                            Call AI Agent
-                        </Button>
+
+                        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 2 }}>
+                            <Button
+                                variant="contained"
+                                sx={{
+                                    display: 'inline-block',
+                                    margin: '20px auto',
+                                    padding: '10px 20px',
+                                    fontWeight: 'bold',
+                                    backgroundColor: '#0D9ECA',
+                                    color: '#fff',
+                                    '&:hover': {
+                                        backgroundColor: '#0B7A9C',
+                                    },
+                                }}
+                                component="a"
+                                href="tel:+13239189240"
+                            >
+                                Call AI Agent
+                            </Button>
+                        </Box>
                     </Paper>
                 </Grid>
                 {/* Second Row */}
                 <Grid container item xs={12} spacing={3}>
-                    <Grid item xs={4}>
-                        <Paper elevation={6} sx={{ padding: 3, borderRadius: '16px', height: 200 }}>
+                    <Grid item xs={12} sm={4}>
+                        <Paper elevation={6} sx={{ padding: 3, borderRadius: '16px', height: '100%' }}>
                             <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#2C3E50' }}>Customer Details</Typography>
                             {data.Customer ? (
                                 <>
@@ -85,12 +97,12 @@ const ResultsPage = () => {
                                     <Typography sx={{ color: '#2C3E50', fontWeight: 'bold' }}>Credit Score: <span style={{ color: '#4A6378' }}>{data.Customer.CreditScore}</span></Typography>
                                 </>
                             ) : (
-                                <Typography sx={{ color: '#E74C3C' }}>No customer data available</Typography>
+                                <Typography sx={{ color: '#E74C3E' }}>No customer data available</Typography>
                             )}
                         </Paper>
                     </Grid>
-                    <Grid item xs={4}>
-                        <Paper elevation={6} sx={{ padding: 3, borderRadius: '16px', height: 200 }}>
+                    <Grid item xs={12} sm={4}>
+                        <Paper elevation={6} sx={{ padding: 3, borderRadius: '16px', height: '100%' }}>
                             <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#2C3E50' }}>Bank Account Details:</Typography>
                             {data.BankAccount ? (
                                 <>
@@ -99,12 +111,12 @@ const ResultsPage = () => {
                                     <Typography sx={{ color: '#2C3E50', fontWeight: 'bold' }}>Balance: <span style={{ color: '#4A6378' }}>₹{data.BankAccount.Balance}</span></Typography>
                                 </>
                             ) : (
-                                <Typography sx={{ color: '#E74C3C' }}>No bank account data available</Typography>
+                                <Typography sx={{ color: '#E74C3E' }}>No bank account data available</Typography>
                             )}
                         </Paper>
                     </Grid>
-                    <Grid item xs={4}>
-                        <Paper elevation={6} sx={{ padding: 3, borderRadius: '16px', height: 200 }}>
+                    <Grid item xs={12} sm={4}>
+                        <Paper elevation={6} sx={{ padding: 3, borderRadius: '16px', height: '100%' }}>
                             <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#2C3E50' }}>Loan Details:</Typography>
                             {data.LoanDetails ? (
                                 <>
@@ -122,24 +134,24 @@ const ResultsPage = () => {
                 </Grid>
 
                 {/* Third Row */}
-                <Grid container item xs={12} spacing={3} justifyContent="center">
-                    <Grid item xs={4}>
-                        <Paper elevation={6} sx={{ padding: 3, borderRadius: '16px', height: 200 }}>
+                <Grid container item xs={12} spacing={3} justifyContent="center" sx={{ marginTop: 3 }}>
+                    <Grid item xs={12} sm={4}>
+                        <Paper elevation={6} sx={{ padding: 3, borderRadius: '16px', height: '100%' }}>
                             <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#2C3E50' }}>Fixed Deposit Details</Typography>
                             {data.FixedDeposit ? (
                                 <>
                                     <Typography sx={{ color: '#2C3E50', fontWeight: 'bold' }}>Invested Amount: <span style={{ color: '#4A6378' }}>₹{data.FixedDeposit.InvestedAmount}</span></Typography>
                                     <Typography sx={{ color: '#2C3E50', fontWeight: 'bold' }}>Maturity Amount: <span style={{ color: '#4A6378' }}>₹{data.FixedDeposit.MaturityAmount}</span></Typography>
                                     <Typography sx={{ color: '#2C3E50', fontWeight: 'bold' }}>Invested Date: <span style={{ color: '#4A6378' }}>{data.FixedDeposit.InvestedDate}</span></Typography>
-                                    <Typography sx={{ color: '#2C3E50', fontWeight: 'bold' }}>Maturity Date: <span style={{ color: '#4A6378' }}>{data.FixedDeposit.MaturityDate}</span></Typography>
+                                    <Typography sx={{ color: '#2C3E50', fontWeight: 'bold' }}>Maturity Date: <span style={{ color: '#4A 6378' }}>{data.FixedDeposit.MaturityDate}</span></Typography>
                                 </>
                             ) : (
-                                <Typography sx={{ color: '#E74C3C' }}>No fixed deposit data available</Typography>
+                                <Typography sx={{ color: '#E74C3E' }}>No fixed deposit data available</Typography>
                             )}
                         </Paper>
                     </Grid>
-                    <Grid item xs={4}>
-                        <Paper elevation={6} sx={{ padding: 3, borderRadius: '16px', height: 200 }}>
+                    <Grid item xs={12} sm={4}>
+                        <Paper elevation={6} sx={{ padding: 3, borderRadius: '16px', height: '100%' }}>
                             <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', color: '#2C3E50' }}>Recurring Deposit Details</Typography>
                             {data.RecurringDeposit ? (
                                 <>
@@ -149,7 +161,7 @@ const ResultsPage = () => {
                                     <Typography sx={{ color: '#2C3E50', fontWeight: 'bold' }}>Maturity Date: <span style={{ color: '#4A6378' }}>{data.RecurringDeposit.RDMaturityDate}</span></Typography>
                                 </>
                             ) : (
-                                <Typography sx={{ color: '#E74C3C' }}>No recurring deposit data available</Typography>
+                                <Typography sx={{ color: '#E74C3E' }}>No recurring deposit data available</Typography>
                             )}
                         </Paper>
                     </Grid>
